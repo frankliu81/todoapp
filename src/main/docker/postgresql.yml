@@ -1,0 +1,12 @@
+version: '2'
+services:
+  todoapp-postgresql:
+    image: postgres:12.1
+    # volumes:
+    #     - ~/volumes/jhipster/todoapp/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=todoapp
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
