@@ -17,7 +17,7 @@ export class UserJWTController {
   @ApiOperation({ title: 'Authorization api retrieving token' })
   @ApiResponse({
     status: 201,
-    description: 'Authorized',
+    description: 'Authorized'
   })
   async authorize(@Req() req: Request, @Body() user: UserLoginDTO, @Res() res: Response): Promise<any> {
     const jwt = await this.authService.login(user);

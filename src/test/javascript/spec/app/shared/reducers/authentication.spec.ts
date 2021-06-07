@@ -14,7 +14,6 @@ import authentication, {
   logout,
   clearAuthToken
 } from 'app/shared/reducers/authentication';
-import { ACTION_TYPES as localeActionTypes } from 'app/shared/reducers/locale';
 
 describe('Authentication reducer tests', () => {
   function isAccountEmpty(state): boolean {
@@ -154,7 +153,7 @@ describe('Authentication reducer tests', () => {
     const resolvedObject = { value: 'whatever' };
     beforeEach(() => {
       const mockStore = configureStore([thunk, promiseMiddleware]);
-      store = mockStore({ authentication: { account: { langKey: 'en' } } });
+      store = mockStore({ authentication: { account: {} } });
       axios.get = sinon.stub().returns(Promise.resolve(resolvedObject));
     });
 
@@ -166,10 +165,6 @@ describe('Authentication reducer tests', () => {
         {
           type: SUCCESS(ACTION_TYPES.GET_SESSION),
           payload: resolvedObject
-        },
-        {
-          type: localeActionTypes.SET_LOCALE,
-          locale: 'en'
         }
       ];
       await store.dispatch(getSession());
@@ -217,10 +212,6 @@ describe('Authentication reducer tests', () => {
         {
           type: SUCCESS(ACTION_TYPES.GET_SESSION),
           payload: resolvedObject
-        },
-        {
-          type: localeActionTypes.SET_LOCALE,
-          locale: 'en'
         }
       ];
       await store.dispatch(login('test', 'test'));

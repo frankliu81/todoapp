@@ -2,7 +2,7 @@ import './home.scss';
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Translate } from 'react-jhipster';
+
 import { connect } from 'react-redux';
 import { Row, Col, Alert } from 'reactstrap';
 
@@ -16,76 +16,65 @@ export const Home = (props: IHomeProp) => {
   return (
     <Row>
       <Col md="9">
-        <h2>
-          <Translate contentKey="home.title">Welcome, Node Hipster Official Blueprint!</Translate>
-        </h2>
-        <p className="lead">
-          <Translate contentKey="home.subtitle">This is your homepage</Translate>
-        </p>
+        <h2>Welcome, Node Hipster Official Blueprint!</h2>
+        <p className="lead">This is your homepage</p>
         {account && account.login ? (
           <div>
-            <Alert color="success">
-              <Translate contentKey="home.logged.message" interpolate={{ username: account.login }}>
-                You are logged in as user {account.login}.
-              </Translate>
-            </Alert>
+            <Alert color="success">You are logged in as user {account.login}.</Alert>
           </div>
         ) : (
           <div>
             <Alert color="warning">
-              <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
+              If you want to
               <Link to="/login" className="alert-link">
-                <Translate contentKey="global.messages.info.authenticated.link"> sign in</Translate>
+                {' '}
+                sign in
               </Link>
-              <Translate contentKey="global.messages.info.authenticated.suffix">
-                , you can try the default accounts:
-                <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
-                <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
-              </Translate>
+              , you can try the default accounts:
+              <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
+              <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
             </Alert>
 
             <Alert color="warning">
-              <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>&nbsp;
+              You do not have an account yet?&nbsp;
               <Link to="/account/register" className="alert-link">
-                <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
+                Register a new account
               </Link>
             </Alert>
           </div>
         )}
-        <p>
-          <Translate contentKey="home.question">If you have any question on JHipster or NHipster:</Translate>
-        </p>
+        <p>If you have any question on JHipster or NHipster:</p>
 
         <ul>
           <li>
             <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.homepage">JHipster homepage</Translate>
+              JHipster homepage
             </a>
           </li>
           <li>
             <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.stackoverflow">JHipster on Stack Overflow</Translate>
+              JHipster on Stack Overflow
             </a>
           </li>
           <li>
             <a href="https://github.com/jhipster/generator-jhipster-nodejs/issues?state=open" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.bugtracker">NHipster bug tracker</Translate>
+              NHipster bug tracker
             </a>
           </li>
           <li>
             <a href="https://gitter.im/jhipster/generator-jhipster-nodejs" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.chat">NHipster public chat room</Translate>
+              NHipster public chat room
             </a>
           </li>
           <li>
             <a href="https://twitter.com/java_hipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.follow">follow @java_hipster on Twitter</Translate>
+              follow @java_hipster on Twitter
             </a>
           </li>
         </ul>
 
         <p>
-          <Translate contentKey="home.like">If you like NHipster, do not forget to give us a star on</Translate>{' '}
+          If you like NHipster, do not forget to give us a star on{' '}
           <a href="https://github.com/jhipster/generator-jhipster-nodejs" target="_blank" rel="noopener noreferrer">
             Github
           </a>
@@ -101,7 +90,7 @@ export const Home = (props: IHomeProp) => {
 
 const mapStateToProps = storeState => ({
   account: storeState.authentication.account,
-  isAuthenticated: storeState.authentication.isAuthenticated,
+  isAuthenticated: storeState.authentication.isAuthenticated
 });
 
 type StateProps = ReturnType<typeof mapStateToProps>;

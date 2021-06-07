@@ -20,7 +20,7 @@ export class AccountController {
   @ApiResponse({
     status: 201,
     description: 'Registered user',
-    type: User,
+    type: User
   })
   registerAccount(@Req() req: Request, @Body() user: User, @Res() res: Response): any {
     return res.sendStatus(201);
@@ -30,7 +30,7 @@ export class AccountController {
   @ApiOperation({ title: 'Activate an account' })
   @ApiResponse({
     status: 200,
-    description: 'activated',
+    description: 'activated'
   })
   activateAccount(@Param() key: string, @Res() res: Response): any {
     return res.sendStatus(200);
@@ -40,7 +40,7 @@ export class AccountController {
   @ApiOperation({ title: 'Check if the user is authenticated' })
   @ApiResponse({
     status: 200,
-    description: 'login authenticated',
+    description: 'login authenticated'
   })
   isAuthenticated(@Req() req: Request): any {
     const user: any = req.user;
@@ -51,7 +51,7 @@ export class AccountController {
   @ApiOperation({ title: 'Get the current user.' })
   @ApiResponse({
     status: 200,
-    description: 'user retrieved',
+    description: 'user retrieved'
   })
   async getAccount(@Req() req: Request): Promise<any> {
     const user: any = req.user;
@@ -63,7 +63,7 @@ export class AccountController {
   @ApiResponse({
     status: 201,
     description: 'user info updated',
-    type: User,
+    type: User
   })
   saveAccount(@Req() req: Request, @Body() user: User, @Res() res: Response): any {
     return res.sendStatus(201);
@@ -74,7 +74,7 @@ export class AccountController {
   @ApiResponse({
     status: 201,
     description: 'user password changed',
-    type: User,
+    type: User
   })
   changePassword(@Req() req: Request, @Body() user: User, @Res() res: Response): any {
     return res.sendStatus(201);
@@ -85,7 +85,7 @@ export class AccountController {
   @ApiResponse({
     status: 201,
     description: 'mail to reset password sent',
-    type: 'string',
+    type: 'string'
   })
   requestPasswordReset(@Req() req: Request, @Body() email: string, @Res() res: Response): any {
     return res.sendStatus(201);
@@ -96,7 +96,7 @@ export class AccountController {
   @ApiResponse({
     status: 201,
     description: 'password reset',
-    type: 'string',
+    type: 'string'
   })
   finishPasswordReset(@Req() req: Request, @Body() keyAndPassword: string, @Res() res: Response): any {
     return res.sendStatus(201);

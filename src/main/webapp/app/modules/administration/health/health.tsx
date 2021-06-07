@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Translate } from 'react-jhipster';
+
 import { Table, Badge, Col, Row, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -42,10 +42,7 @@ export const HealthPage = (props: IHealthPageProps) => {
       <p>
         <Button onClick={getSystemHealth} color={isFetching ? 'btn btn-danger' : 'btn btn-primary'} disabled={isFetching}>
           <FontAwesomeIcon icon="sync" />
-          &nbsp;
-          <Translate component="span" contentKey="health.refresh.button">
-            Refresh
-          </Translate>
+          &nbsp; Refresh
         </Button>
       </p>
       <Row>
@@ -87,7 +84,7 @@ export const HealthPage = (props: IHealthPageProps) => {
 
 const mapStateToProps = (storeState: IRootState) => ({
   health: storeState.administration.health,
-  isFetching: storeState.administration.loading,
+  isFetching: storeState.administration.loading
 });
 
 const mapDispatchToProps = { systemHealth };

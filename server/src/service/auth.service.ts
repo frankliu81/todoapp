@@ -32,7 +32,7 @@ export class AuthService {
 
     /* eslint-disable */
     return {
-      id_token: this.jwtService.sign(payload),
+      id_token: this.jwtService.sign(payload)
     };
   }
 

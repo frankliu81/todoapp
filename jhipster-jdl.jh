@@ -1,0 +1,26 @@
+application {
+	config {
+		applicationType monolith,
+		baseName todoapp,
+		serverPort 8081,
+		cacheProvider no,
+		enableHibernateCache false,
+		authenticationType jwt,
+	        databaseType sql,
+	        prodDatabaseType postgresql,
+		serviceDiscoveryType false,
+		clientPackageManager npm,
+		useSass true,
+		enableTranslation false,
+		clientFramework react,
+ 	        clientTheme united,
+	        clientThemeVariant primary		
+	}
+	entities *
+}
+
+// JDL definition entity for application
+entity Todo {
+    name String
+}
+

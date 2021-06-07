@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Col, Row, Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { Translate, translate, getUrlParameter } from 'react-jhipster';
+import { getUrlParameter } from 'react-jhipster';
 import { RouteComponentProps } from 'react-router-dom';
 
 import { handlePasswordResetFinish, reset } from '../password-reset.reducer';
@@ -25,31 +25,31 @@ export const PasswordResetFinishPage = (props: IPasswordResetFinishProps) => {
       <AvForm onValidSubmit={handleValidSubmit}>
         <AvField
           name="newPassword"
-          label={translate('global.form.newpassword.label')}
-          placeholder={translate('global.form.newpassword.placeholder')}
+          label="New password"
+          placeholder={'New password'}
           type="password"
           validate={{
-            required: { value: true, errorMessage: translate('global.messages.validate.newpassword.required') },
-            minLength: { value: 4, errorMessage: translate('global.messages.validate.newpassword.minlength') },
-            maxLength: { value: 50, errorMessage: translate('global.messages.validate.newpassword.maxlength') },
+            required: { value: true, errorMessage: 'Your password is required.' },
+            minLength: { value: 4, errorMessage: 'Your password is required to be at least 4 characters.' },
+            maxLength: { value: 50, errorMessage: 'Your password cannot be longer than 50 characters.' }
           }}
           onChange={updatePassword}
         />
         <PasswordStrengthBar password={password} />
         <AvField
           name="confirmPassword"
-          label={translate('global.form.confirmpassword.label')}
-          placeholder={translate('global.form.confirmpassword.placeholder')}
+          label="New password confirmation"
+          placeholder="Confirm the new password"
           type="password"
           validate={{
-            required: { value: true, errorMessage: translate('global.messages.validate.confirmpassword.required') },
-            minLength: { value: 4, errorMessage: translate('global.messages.validate.confirmpassword.minlength') },
-            maxLength: { value: 50, errorMessage: translate('global.messages.validate.confirmpassword.maxlength') },
-            match: { value: 'newPassword', errorMessage: translate('global.messages.error.dontmatch') },
+            required: { value: true, errorMessage: 'Your confirmation password is required.' },
+            minLength: { value: 4, errorMessage: 'Your confirmation password is required to be at least 4 characters.' },
+            maxLength: { value: 50, errorMessage: 'Your confirmation password cannot be longer than 50 characters.' },
+            match: { value: 'newPassword', errorMessage: 'The password and its confirmation do not match!' }
           }}
         />
         <Button color="success" type="submit">
-          <Translate contentKey="reset.finish.form.button">Validate new password</Translate>
+          Validate new password
         </Button>
       </AvForm>
     );
@@ -59,9 +59,7 @@ export const PasswordResetFinishPage = (props: IPasswordResetFinishProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="4">
-          <h1>
-            <Translate contentKey="reset.finish.title">Reset password</Translate>
-          </h1>
+          <h1>Reset password</h1>
           <div>{key ? getResetForm() : null}</div>
         </Col>
       </Row>

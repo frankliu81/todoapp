@@ -25,9 +25,9 @@
     "useSass": true,
     "clientPackageManager": "npm",
     "clientFramework": "react",
-    "clientTheme": "cerulean",
+    "clientTheme": "united",
     "clientThemeVariant": "primary",
-    "creationTimestamp": 1604877354516,
+    "creationTimestamp": 1623024960637,
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
@@ -38,14 +38,19 @@
         "version": "1.3.0"
       }
     ],
-    "enableTranslation": true,
+    "enableTranslation": false,
     "nativeLanguage": "en",
-    "languages": ["en"],
+    "languages": ["en", "fr"],
     "blueprints": [
       {
         "name": "generator-jhipster-nodejs",
         "version": "1.3.0"
       }
-    ]
-  }
+    ],
+    "skipUserManagement": false,
+    "skipClient": false,
+    "skipServer": false,
+    "jwtSecretKey": "Yzg2MzBmMWE4ZmMwMWZiMmZkMGQ1NmEwMjZmZWNkMTk4ZTliNTI3NTIwOTEyNGYzMjhhM2YyMzg4ODg3ZWE3NjBmZDA2ODVlZGM3YmM3ZWYzNTBiNmMwNzg0MWQ0OTVmYzg3MjEzNWIzYTUyNWJmMDc5MDlkODQ3YzhiNTRjOGM="
+  },
+  "entities": ["Todo"]
 }
