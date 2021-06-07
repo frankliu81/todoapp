@@ -21,7 +21,7 @@ export class AuthController {
     status: 200,
     description: 'List all user roles',
     type: 'string',
-    isArray: true,
+    isArray: true
   })
   @Roles(RoleType.ADMIN)
   getAuthorities(@Req() req: any): any {

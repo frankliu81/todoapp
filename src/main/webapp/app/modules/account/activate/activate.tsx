@@ -2,18 +2,16 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Row, Col, Alert } from 'reactstrap';
-import { Translate, getUrlParameter } from 'react-jhipster';
+import { getUrlParameter } from 'react-jhipster';
 
 import { IRootState } from 'app/shared/reducers';
 import { activateAction, reset } from './activate.reducer';
 
 const successAlert = (
   <Alert color="success">
-    <Translate contentKey="activate.messages.success">
-      <strong>Your user account has been activated.</strong> Please
-    </Translate>
+    <strong>Your user account has been activated.</strong> Please
     <Link to="/login" className="alert-link">
-      <Translate contentKey="global.messages.info.authenticated.link">sign in</Translate>
+      sign in
     </Link>
     .
   </Alert>
@@ -21,9 +19,7 @@ const successAlert = (
 
 const failureAlert = (
   <Alert color="danger">
-    <Translate contentKey="activate.messages.error">
-      <strong>Your user could not be activated.</strong> Please use the registration form to sign up.
-    </Translate>
+    <strong>Your user could not be activated.</strong> Please use the registration form to sign up.
   </Alert>
 );
 
@@ -42,9 +38,7 @@ export const ActivatePage = (props: IActivateProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h1>
-            <Translate contentKey="activate.title">Activation</Translate>
-          </h1>
+          <h1>Activation</h1>
           {props.activationSuccess ? successAlert : undefined}
           {props.activationFailure ? failureAlert : undefined}
         </Col>
@@ -55,7 +49,7 @@ export const ActivatePage = (props: IActivateProps) => {
 
 const mapStateToProps = ({ activate }: IRootState) => ({
   activationSuccess: activate.activationSuccess,
-  activationFailure: activate.activationFailure,
+  activationFailure: activate.activationFailure
 });
 
 const mapDispatchToProps = { activateAction, reset };

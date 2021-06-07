@@ -13,12 +13,12 @@ export class ManagementController {
   @ApiOperation({ title: 'Microservice Info' })
   @ApiResponse({
     status: 200,
-    description: 'Check if the microservice is up',
+    description: 'Check if the microservice is up'
   })
   info(): any {
     return {
       activeProfiles: 'no',
-      'display-ribbon-on-profiles': 'no',
+      'display-ribbon-on-profiles': 'no'
     };
   }
 }

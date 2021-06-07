@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { Button, Col, Alert, Row } from 'reactstrap';
 import { connect } from 'react-redux';
-import { Translate, translate } from 'react-jhipster';
+
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
-import { locales, languages } from 'app/config/translation';
 import { IRootState } from 'app/shared/reducers';
 import { getSession } from 'app/shared/reducers/authentication';
 import { saveAccountSettings, reset } from './settings.reducer';
@@ -22,7 +21,7 @@ export const SettingsPage = (props: IUserSettingsProps) => {
   const handleValidSubmit = (event, values) => {
     const account = {
       ...props.account,
-      ...values,
+      ...values
     };
 
     props.saveAccountSettings(account);
@@ -33,23 +32,19 @@ export const SettingsPage = (props: IUserSettingsProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="settings-title">
-            <Translate contentKey="settings.title" interpolate={{ username: props.account.login }}>
-              User settings for {props.account.login}
-            </Translate>
-          </h2>
+          <h2 id="settings-title">User settings for {props.account.login}</h2>
           <AvForm id="settings-form" onValidSubmit={handleValidSubmit}>
             {/* First name */}
             <AvField
               className="form-control"
               name="firstName"
-              label={translate('settings.form.firstname')}
+              label="First Name"
               id="firstName"
-              placeholder={translate('settings.form.firstname.placeholder')}
+              placeholder="Your first name"
               validate={{
-                required: { value: true, errorMessage: translate('settings.messages.validate.firstname.required') },
-                minLength: { value: 1, errorMessage: translate('settings.messages.validate.firstname.minlength') },
-                maxLength: { value: 50, errorMessage: translate('settings.messages.validate.firstname.maxlength') },
+                required: { value: true, errorMessage: 'Your first name is required.' },
+                minLength: { value: 1, errorMessage: 'Your first name is required to be at least 1 character' },
+                maxLength: { value: 50, errorMessage: 'Your first name cannot be longer than 50 characters' }
               }}
               value={props.account.firstName}
             />
@@ -57,46 +52,31 @@ export const SettingsPage = (props: IUserSettingsProps) => {
             <AvField
               className="form-control"
               name="lastName"
-              label={translate('settings.form.lastname')}
+              label="Last Name"
               id="lastName"
-              placeholder={translate('settings.form.lastname.placeholder')}
+              placeholder="Your last name"
               validate={{
-                required: { value: true, errorMessage: translate('settings.messages.validate.lastname.required') },
-                minLength: { value: 1, errorMessage: translate('settings.messages.validate.lastname.minlength') },
-                maxLength: { value: 50, errorMessage: translate('settings.messages.validate.lastname.maxlength') },
+                required: { value: true, errorMessage: 'Your last name is required.' },
+                minLength: { value: 1, errorMessage: 'Your last name is required to be at least 1 character' },
+                maxLength: { value: 50, errorMessage: 'Your last name cannot be longer than 50 characters' }
               }}
               value={props.account.lastName}
             />
             {/* Email */}
             <AvField
               name="email"
-              label={translate('global.form.email.label')}
-              placeholder={translate('global.form.email.placeholder')}
+              label="Email"
+              placeholder={'Your email'}
               type="email"
               validate={{
-                required: { value: true, errorMessage: translate('global.messages.validate.email.required') },
-                minLength: { value: 5, errorMessage: translate('global.messages.validate.email.minlength') },
-                maxLength: { value: 254, errorMessage: translate('global.messages.validate.email.maxlength') },
+                required: { value: true, errorMessage: 'Your email is required.' },
+                minLength: { value: 5, errorMessage: 'Your email is required to be at least 5 characters.' },
+                maxLength: { value: 254, errorMessage: 'Your email cannot be longer than 50 characters.' }
               }}
               value={props.account.email}
             />
-            {/* Language key */}
-            <AvField
-              type="select"
-              id="langKey"
-              name="langKey"
-              className="form-control"
-              label={translate('settings.form.language')}
-              value={props.account.langKey}
-            >
-              {locales.map(locale => (
-                <option value={locale} key={locale}>
-                  {languages[locale].name}
-                </option>
-              ))}
-            </AvField>
             <Button color="primary" type="submit">
-              <Translate contentKey="settings.form.button">Save</Translate>
+              Save
             </Button>
           </AvForm>
         </Col>
@@ -107,7 +87,7 @@ export const SettingsPage = (props: IUserSettingsProps) => {
 
 const mapStateToProps = ({ authentication }: IRootState) => ({
   account: authentication.account,
-  isAuthenticated: authentication.isAuthenticated,
+  isAuthenticated: authentication.isAuthenticated
 });
 
 const mapDispatchToProps = { getSession, saveAccountSettings, reset };

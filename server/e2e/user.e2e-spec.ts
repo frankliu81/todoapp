@@ -24,12 +24,12 @@ describe('User', () => {
     activated: true,
     langKey: 'en',
     createdBy: 'testadmin',
-    lastModifiedBy: 'testadmin',
+    lastModifiedBy: 'testadmin'
   };
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [AppModule]
     })
       .overrideGuard(AuthGuard)
       .useValue(authGuardMock)
@@ -43,21 +43,33 @@ describe('User', () => {
   });
 
   it('/POST create user', async () => {
-    const createdUser: User = (await request(app.getHttpServer()).post('/api/users').send(testUser).expect(201)).body;
+    const createdUser: User = (
+      await request(app.getHttpServer())
+        .post('/api/users')
+        .send(testUser)
+        .expect(201)
+    ).body;
 
     expect(createdUser.login).toEqual(testUser.login);
     await repository.remove(createdUser);
   });
 
   it('/GET all users', () => {
-    request(app.getHttpServer()).get('/api/users').expect(200);
+    request(app.getHttpServer())
+      .get('/api/users')
+      .expect(200);
   });
 
   it('/PUT update user', async () => {
     const savedUser: User = await repository.save(testUser);
     savedUser.firstName = 'Updated Name';
 
-    const updatedUser: User = (await request(app.getHttpServer()).put('/api/users').send(savedUser).expect(201)).body;
+    const updatedUser: User = (
+      await request(app.getHttpServer())
+        .put('/api/users')
+        .send(savedUser)
+        .expect(201)
+    ).body;
 
     expect(updatedUser).toEqual(savedUser);
 

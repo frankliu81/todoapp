@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
-import { Translate } from 'react-jhipster';
+
 import { IRootState } from 'app/shared/reducers';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 
@@ -26,9 +26,7 @@ export const PrivateRouteComponent = ({
       </ErrorBoundary>
     ) : (
       <div className="insufficient-authority">
-        <div className="alert alert-danger">
-          <Translate contentKey="error.http.403">You are not authorized to access this page.</Translate>
-        </div>
+        <div className="alert alert-danger">You are not authorized to access this page.</div>
       </div>
     );
 
@@ -43,7 +41,7 @@ export const PrivateRouteComponent = ({
           to={{
             pathname: '/login',
             search: props.location.search,
-            state: { from: props.location },
+            state: { from: props.location }
           }}
         />
       );
@@ -71,7 +69,7 @@ const mapStateToProps = (
 ) => ({
   isAuthenticated,
   isAuthorized: hasAnyAuthority(account.authorities, hasAnyAuthorities),
-  sessionHasBeenFetched,
+  sessionHasBeenFetched
 });
 
 type StateProps = ReturnType<typeof mapStateToProps>;

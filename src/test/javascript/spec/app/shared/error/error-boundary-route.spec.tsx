@@ -29,7 +29,7 @@ describe('error-boundary-route component', () => {
     const renderFn: Function = renderedRoute.props().render;
     const comp = mount(
       renderFn({
-        location: '/',
+        location: '/'
       })
     );
     expect(comp.length).toEqual(1);

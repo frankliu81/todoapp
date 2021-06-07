@@ -17,7 +17,7 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
     activated: true,
     langKey: 'en',
     createdBy: 'system',
-    lastModifiedBy: 'system',
+    lastModifiedBy: 'system'
   };
 
   user2: User = {
@@ -30,7 +30,7 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
     activated: true,
     langKey: 'en',
     createdBy: 'system',
-    lastModifiedBy: 'system',
+    lastModifiedBy: 'system'
   };
 
   user3: User = {
@@ -43,7 +43,7 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
     activated: true,
     langKey: 'en',
     createdBy: 'system',
-    lastModifiedBy: 'system',
+    lastModifiedBy: 'system'
   };
 
   user4: User = {
@@ -56,18 +56,36 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
     activated: true,
     langKey: 'en',
     createdBy: 'system',
-    lastModifiedBy: 'system',
+    lastModifiedBy: 'system'
   };
 
   public async up(queryRunner: QueryRunner): Promise<any> {
     const conn = queryRunner.connection;
-    await conn.createQueryBuilder().insert().into(Authority).values([this.role1, this.role2]).execute();
+    await conn
+      .createQueryBuilder()
+      .insert()
+      .into(Authority)
+      .values([this.role1, this.role2])
+      .execute();
 
-    await conn.createQueryBuilder().insert().into(User).values([this.user1, this.user2, this.user3, this.user4]).execute();
+    await conn
+      .createQueryBuilder()
+      .insert()
+      .into(User)
+      .values([this.user1, this.user2, this.user3, this.user4])
+      .execute();
 
-    await conn.createQueryBuilder().relation(User, 'authorities').of([this.user1, this.user3]).add([this.role1, this.role2]);
+    await conn
+      .createQueryBuilder()
+      .relation(User, 'authorities')
+      .of([this.user1, this.user3])
+      .add([this.role1, this.role2]);
 
-    await conn.createQueryBuilder().relation(User, 'authorities').of(this.user4).add([this.role2]);
+    await conn
+      .createQueryBuilder()
+      .relation(User, 'authorities')
+      .of(this.user4)
+      .add([this.role2]);
   }
 
   // eslint-disable-next-line

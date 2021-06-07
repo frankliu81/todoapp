@@ -1,7 +1,6 @@
 import './password-strength-bar.scss';
 
 import React from 'react';
-import { Translate } from 'react-jhipster';
 
 export interface IPasswordStrengthBarProps {
   password: string;
@@ -17,7 +16,7 @@ export const PasswordStrengthBar = ({ password }: IPasswordStrengthBarProps) => 
       lowerLetters: /[a-z]+/.test(p),
       upperLetters: /[A-Z]+/.test(p),
       numbers: /[0-9]+/.test(p),
-      symbols: regex.test(p),
+      symbols: regex.test(p)
     };
 
     const passedMatches = Object.values(flags).filter((isMatchedFlag: boolean) => !!isMatchedFlag).length;
@@ -65,9 +64,7 @@ export const PasswordStrengthBar = ({ password }: IPasswordStrengthBarProps) => 
 
   return (
     <div id="strength">
-      <small>
-        <Translate contentKey="global.messages.validate.newpassword.strength">Password strength:</Translate>
-      </small>
+      <small>Password strength:</small>
       <ul id="strengthBar">{points}</ul>
     </div>
   );

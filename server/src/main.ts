@@ -20,7 +20,7 @@ async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule, appOptions);
   app.useGlobalPipes(
     new ValidationPipe({
-      exceptionFactory: (): BadRequestException => new BadRequestException('Validation error'),
+      exceptionFactory: (): BadRequestException => new BadRequestException('Validation error')
     })
   );
 
@@ -47,7 +47,7 @@ async function loadCloudConfig(): Promise<void> {
       context: process.env,
       endpoint,
       name: config.get('cloud.config.name'),
-      profiles: config.get('cloud.config.profile') || ['prod'],
+      profiles: config.get('cloud.config.profile') || ['prod']
       // auth: {
       //   user: config.get('jhipster.registry.username') || 'admin',
       //   pass: config.get('jhipster.registry.password') || 'admin'
@@ -71,28 +71,28 @@ function registerAsEurekaService(): void {
         status: `UP`,
         port: {
           $: port,
-          '@enabled': 'true',
+          '@enabled': 'true'
         },
         vipAddress: config.get('ipAddress') || 'localhost',
         homePageUrl: `http://${config.get('ipAddress')}:${port}/`,
         dataCenterInfo: {
           '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
-          name: 'MyOwn',
-        },
+          name: 'MyOwn'
+        }
       },
       eureka: {
         // eureka server host / port
         host: eurekaUrl.hostname || '127.0.0.1',
         port: eurekaUrl.port || 8761,
-        servicePath: '/eureka/apps',
+        servicePath: '/eureka/apps'
       },
       requestMiddleware: (requestOpts, done): any => {
         requestOpts.auth = {
           user: config.get('jhipster.registry.username') || 'admin',
-          password: config.get('jhipster.registry.password') || 'admin',
+          password: config.get('jhipster.registry.password') || 'admin'
         };
         done(requestOpts);
-      },
+      }
     });
     client.logger.level('debug');
     client.start(error => logger.log(error || 'Eureka registration complete'));
